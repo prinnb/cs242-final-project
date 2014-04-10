@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}" />
+    <title>{{ restaurant_obj.name }}</title>
+</head>
+
+<body>
+<img border="0" src= "{{ restaurant_obj.logo.url }}" >
+<h3>{{ restaurant_obj.about_us }}<h3>
+</body>
+</html>

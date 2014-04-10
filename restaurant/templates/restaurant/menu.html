@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}" />
+    <title>Menu</title>
+</head>
+
+<body>
+<h3><h3>
+	{% if menu_cats %}
+	    <ul>
+	    {% for menu_cat in menu_cats %}
+	        <li><a href="{% url 'menu_cat' menu_cat.id %}">{{ menu_cat.title }}</a></li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No Menu Categories</p>
+	{% endif %}
+</body>
+</html>
