@@ -1,0 +1,32 @@
+Synopsis
+My plan for the final project is to create a website for a restaurant that can be easily
+maintained. While there are lots of restaurant sites out there, many of them only show
+basic information of the restaurant statically, lacking useful features such as making a
+reservation and ordering, or are created in a way that is hard for the owners who do
+not have skill in web development to edit information and maintain the website.
+With my current plan, the restaurant owner would be able to login to the owner mode.
+Once logged in, the owner would be able to upload photos and add/edit information
+such as location, phone number, food items and prices, etc.
+On the other hand, clients would be able to see menu,make a reservation, 
+order for takeout/delivery, write suggestion etc. 
+
+
+Technologies Involved
+The project would involve Django, JavaScript, jQuery, AJAX, HTML, CSS, and database
+system. Unlike Assignment3, I would created CSS file myself.
+
+
+Implementation Plan
+
+Week 1:
+Design and set up database. Learn and setup django. Implement model part of the project. 
+Set up owner (i.e., admin) page
+
+Week 2:
+Implement basic view (html/css) of the main pages of the site. Tie it with the last week model.
+
+Week 3:
+Continue working on and improve the view. Customize admin page.
+
+Week 4:
+Add Javascript/Ajax to the web. Polish UI.
