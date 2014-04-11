@@ -1,8 +1,5 @@
 #python specific
 *.pyc
- 
-#south migration
-restaurant/migration/
 
 # generic files to ignore
 *~
