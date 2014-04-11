@@ -1,3 +1,65 @@
-body {
-	background-color : #323232;
+html, body{
+	height: 100%;
+	margin: 0;
+	color: white
+}
+
+.header{ 
+	background-color:#A39F93; 
+	width:100%; 
+	height:150px;
+	position: relative;
+}
+
+.main_content{ 
+	width:100%; 
+	background-color:#4E4C4B;  
+	float:left;
+}
+
+.footer{ 
+	width: 100%;
+	background-color:#323232; 
+	float:left;
+}
+
+/*********************************************************************************/
+/* Menu                                                                          */
+/*********************************************************************************/
+
+#menu
+{
+	position: absolute;
+	right: 10%;
+	top: 0;
+	height: 100%;
+}
+
+#menu ul
+{	
+	margin:0;
+	display: inline-block;
+	height: 100%;
+}
+
+#menu li
+{
+	display: block;
+	float: left;
+	text-align: center;
+
+}
+
+#menu li a
+{
+	display: block;
+	padding: 0em 3em;
+	height: 100%;
+	letter-spacing: 0.20em;
+	line-height: 150px;
+	text-decoration: none;
+	font-size: 0.90em;
+	text-transform: uppercase;
+	outline: 0;
+	color: #6C645D;
 }

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from restaurant.models import Suggestion, MenuCategory, FoodCategory, FoodDetail, FoodMenu, FoodChoice, RestaurantInfo, BusinessHours
+from restaurant.models import Suggestion, MenuCategory, FoodCategory, FoodItem, FoodMenu, ItemChoice, RestaurantInfo, BusinessHours
 
 class FoodMenuInline(admin.StackedInline):
     model = FoodMenu
@@ -13,9 +13,10 @@ class FoodItemAdmin(admin.ModelAdmin):
     inlines = [FoodMenuInline]
 
 admin.site.register(Suggestion)
-admin.site.register(FoodDetail)
+admin.site.register(FoodItem)
+admin.site.register(FoodCategory)
 admin.site.register(MenuCategory)
 admin.site.register(FoodMenu)
-admin.site.register(FoodChoice)
+admin.site.register(ItemChoice)
 admin.site.register(RestaurantInfo)
 admin.site.register(BusinessHours)

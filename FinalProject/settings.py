@@ -11,7 +11,17 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'restaurant/templates/restaurant/')]
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    'restaurant.context_processors.restaurant_info',
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -26,6 +36,8 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SOUTH_TESTS_MIGRATE = False # To disable migrations and use syncdb instead
+SKIP_SOUTH_TESTS = True # To disable South's own unit tests
 
 # Application definition
 

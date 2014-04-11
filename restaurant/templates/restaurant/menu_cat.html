@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}" />
-    <title> {{ menu_cat.title }} </title>
-</head>
+{% extends "index.html" %}
 
-<body>
-<h3><h3>
-{{ menu_cat.description }}
-</body>
+{% block main_content %}
+
+	{{ menu_cat.description }}
+	{% if food_menu_list %}
+	    <ul>
+	    {% for food_menu in food_menu_list %}
+	        <li>{{ food_menu.food_item.name }}</li>
+
+	        {% if food_menu.food_item.description %}
+	        	{{ food_menu.food_item.description }}
+	        {% endif %}
+
+	        {% if food_menu.food_item.image %}
+	        	<img src={{ food_menu.food_item.image.url }}>
+	        {% endif %}
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No Menu</p>
+	{% endif %}
+
+{% endblock %}
