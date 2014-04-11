@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}" />
+	<title>{% block title %}Home{% endblock %}</title>
+</head>
+
+<body>
+<div class="header">
+	<a href="{% url 'index' %}"><img src={{ restaurant_obj.logo.url }}></a>
+	<div id="menu">
+		<ul>
+			<li><a href="{% url 'menu' %}">Menu</a></li>
+			<li><a href="#">Gallery</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Suggestion</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="main_content">
+	{% block main_content %}
+		<h3>{{ restaurant_obj.name }}<h3>
+		<h3>{{ restaurant_obj.about_us }}<h3>
+		<h3>Phone: {{ restaurant_obj.phone }}<h3>
+		<h3>Fax: {{ restaurant_obj.fax }}<h3>
+		<h4>{{ restaurant_obj.street }} {{ restaurant_obj.city }}, {{ restaurant_obj.state }} {{ restaurant_obj.zipcode }}<h4>
+	{% endblock %}
+</div>
+
+<div class="footer">
+Copyright (c) 2014 Prinn Bantoengpratoomrad All rights reserved.
+</div>
+
+</body>
+</html>

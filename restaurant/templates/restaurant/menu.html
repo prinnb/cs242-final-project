@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block main_content %}
+	{{ restaurant_obj.name }}
+	{% if menu_cats %}
+	    <ul>
+	    {% for menu_cat in menu_cats %}
+	        <li><a href="{% url 'menu_cat' menu_cat.id %}">{{ menu_cat.title }}</a></li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No Menu Categories</p>
+	{% endif %}
+
+{% endblock %}

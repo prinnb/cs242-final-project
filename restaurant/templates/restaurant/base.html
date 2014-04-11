@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}" />
+	<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+<div class="header">
+	<div id="menu">
+		<ul>
+			<li><a href="{% url 'menu' %}">Menu</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Suggestion</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="main_content">
+	{% block main_content %}{% endblock %}
+</div>
+
+<div class="footer">
+Copyright (c) 2014 Prinn Bantoengpratoomrad All rights reserved.
+</div>
+
+</body>
+</html>
