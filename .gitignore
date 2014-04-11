@@ -1,6 +1,9 @@
 #python specific
 *.pyc
 
+#south migration
+restaurant/migrations/
+
 # generic files to ignore
 *~
 *.lock
