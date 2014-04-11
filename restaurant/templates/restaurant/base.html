@@ -8,9 +8,11 @@
 
 <body>
 <div class="header">
+	<a href="{% url 'index' %}"><img src={{ restaurant_obj.logo.url }}></a>
 	<div id="menu">
 		<ul>
 			<li><a href="{% url 'menu' %}">Menu</a></li>
+			<li><a href="#">Gallery</a></li>
 			<li><a href="#">About Us</a></li>
 			<li><a href="#">Suggestion</a></li>
 		</ul>
