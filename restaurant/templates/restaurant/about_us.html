@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+
+<div class = content_text>
+
+	<div id="left">
+        <h1>{{ restaurant_obj.name }}</h1>
+        <p>{{ restaurant_obj.about_us }}<p>
+    </div>
+
+    <div id="right">
+	<p>Phone: {{ restaurant_obj.phone }}</p>
+	<p>Fax: {{ restaurant_obj.fax }}</p>
+	<p>{{ restaurant_obj.street }} {{ restaurant_obj.city }}, {{ restaurant_obj.state }} {{ restaurant_obj.zipcode }}</p>
+        <iframe width="100%" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=201%20N%20Goodwin%20Ave%2C%20Urbana%2C%20Illinois
+		%2061801%2C%20United%20States&key=AIzaSyCxlTZTTkp0xho6J6hn6w9AzQSSAZRUpO0"></iframe> 
+    </div>
+
+	
+
+</div>
+
+{% endblock %}
