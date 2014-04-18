@@ -1,5 +1,6 @@
 from restaurant.models import RestaurantInfo, BusinessHours, MenuCategory
 from django.http import Http404
+
 def restaurant_info(request):
 	try: 
 		restaurant_obj = RestaurantInfo.objects.all()[:1].get()

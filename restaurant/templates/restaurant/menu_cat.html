@@ -12,6 +12,7 @@
 	{% for food_cat, food_menu_list in menu_dict.items %} 
 		<li><h1>{{food_cat}}</h1></li>
 		<ul>
+		<!-- Display food menu (i.e., the items) in the food category -->
 		{% for food_menu in food_menu_list %} 
 			<li>
 				<div>

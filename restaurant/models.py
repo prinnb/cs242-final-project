@@ -127,20 +127,20 @@ class AlbumGallery(models.Model):
 	"""
 	Model to represent gallery album
 	"""
-    name = models.CharField(max_length=50, default = "untitled")
-    description = models.CharField(max_length=255, null=True, blank=True)
-    def __unicode__(self):
-        return self.name
+	name = models.CharField(max_length=50, default = "untitled")
+	description = models.CharField(max_length=255, null=True, blank=True)
+	def __unicode__(self):
+		return self.name
         
 class ImageGallery(models.Model):
 	"""
 	Model to represent gallery image
 	"""
-    name = models.CharField(max_length=50,  default = "untitled")
-    image = models.ImageField(upload_to = 'images/ImageGallery')
-    albums = models.ManyToManyField(AlbumGallery)
-    def __unicode__(self):
-        return self.name
+	name = models.CharField(max_length=50,  default = "untitled")
+	image = models.ImageField(upload_to = 'images/ImageGallery')
+	albums = models.ManyToManyField(AlbumGallery)
+	def __unicode__(self):
+		return self.name
 
 
 	
