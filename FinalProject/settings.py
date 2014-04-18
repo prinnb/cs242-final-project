@@ -21,6 +21,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     'restaurant.context_processors.restaurant_info',
+    'restaurant.context_processors.menu_category',
 )
 
 # Quick-start development settings - unsuitable for production

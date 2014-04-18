@@ -2,7 +2,7 @@ import datetime
 from django.utils import timezone
 from django.test import TestCase
 from restaurant.models import Suggestion, MenuCategory, FoodCategory, FoodItem, FoodMenu, ItemChoice, RestaurantInfo, BusinessHours
-
+from django.core.urlresolvers import reverse
 
 class RestaurantTests(TestCase):
 
@@ -101,4 +101,61 @@ class RestaurantTests(TestCase):
 		self.assertEqual(test_food_menu.menu_cat.title, 'lunch')
 		self.assertEqual(test_food_menu.price, test_price)
 
+
+def create_test_restaurant(food_item_name):
+	return RestaurantInfo.objects.create(name = food_item_name)
+
+def create_test_food_item(food_cat_name):
+	return FoodItem.objects.create(name = food_cat_name)
+
+def create_test_food_cat(menu_cat_name):
+	return FoodCategory.objects.create(name = menu_cat_name)
+
+def create_test_menu_cat(price):
+	return MenuCategory.objects.create(title = price)
+
+def create_test_food_menu(food_item, food_cat, menu_cat, price):
+    """
+    """
+    return FoodMenu.objects.create(food_item=food_item,
+        food_cat=food_cat, menu_cat = menu_cat, price = price)
+
+
+class RestaurantViewTests(TestCase):
+
+
+	def test_menu_cat_view_with_one_menu_item(self):
+		"""
+		"""
+		restaurant = create_test_restaurant("test_rest")
+		food_item = create_test_food_item("test_food_item")
+		food_cat = create_test_food_cat("test_food_cat")
+		menu_cat = create_test_menu_cat("test_menu_cat")
+
+		create_test_food_menu(food_item, food_cat, menu_cat, 4.00)
+		response = self.client.get(reverse('menu_cat', args=[1]))
+		self.assertEqual(response.status_code, 200)
+		self.assertEqual(response.context['menu_cat'].title, 'test_menu_cat' )
+		self.assertQuerysetEqual(response.context['menu_dict'][food_cat], ['<FoodMenu: test_food_item | test_menu_cat>'] )
+
+	def test_menu_cat_view_with_two_menu_item(self):
+		"""
+		"""
+		restaurant = create_test_restaurant("test_rest")
+		food_item1 = create_test_food_item("test_food_item1")
+		food_cat1 = create_test_food_cat("test_food_cat1")
+		menu_cat1 = create_test_menu_cat("test_menu_cat1")
+
+		food_item2 = create_test_food_item("test_food_item2")
+		food_cat2 = create_test_food_cat("test_food_cat2")
+		menu_cat2 = create_test_menu_cat("test_menu_cat2")
+
+		create_test_food_menu(food_item1, food_cat1, menu_cat1, 4.00)
+		create_test_food_menu(food_item2, food_cat2, menu_cat2, 5.00)
+		
+		response = self.client.get(reverse('menu_cat', args=[1]))
+		self.assertEqual(response.context['menu_cat'].name, 'test_menu_cat1' )
+		self.assertQuerysetEqual(response.context['menu_dict'][food_cat1], ['<FoodMenu: test_food_item1 | test_menu_cat1>'] )
+		response = self.client.get(reverse('menu_cat', args=[2]))
+		self.assertQuerysetEqual(response.context['menu_dict'][food_cat2], ['<FoodMenu: test_food_item2 | test_menu_cat2>'] )
 

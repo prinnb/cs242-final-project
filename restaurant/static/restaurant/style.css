@@ -4,54 +4,147 @@ html, body{
 	color: white
 }
 
+p{
+	font-family: 'Lato', sans-serif;
+}
+
+ul, h1, h2, h3, h4, h5, h6{
+	font-family: 'Lato', sans-serif;
+}
+
 .header{ 
-	background-color:#A39F93; 
+	background-color:#323232; 
 	width:100%; 
 	height:150px;
 	position: relative;
+	box-shadow: 0px 1px 2px rgba(0,0,0,.5);
 }
 
 .main_content{ 
 	width:100%; 
 	background-color:#4E4C4B;  
 	float:left;
+	min-height: 30em;
+}
+
+.content_text{
+	margin: 100px 300px;
+}
+
+.content_text ul{
+	list-style: none;
+	padding: 0;
+}
+
+.content_text h1{
+	font-size:200%;
+
+}
+
+.content_text ul li{
+	margin-left:0px;
+	margin-top: 6px;
+}
+
+.content_text ul ul li{
+	border-bottom: 1px solid #757575;
+	margin-left:30px;
+	margin-right:30px;
+}
+
+.content_text ul ul li p{
+	font-weight: 100;
+	margin-bottom: 4px;
+}
+
+
+.content_text ul ul li:last-child{
+	border-bottom: 0px;
+	margin-bottom: 50px;
 }
 
 .footer{ 
 	width: 100%;
-	background-color:#323232; 
 	float:left;
+	background-color:#323232; 
+	box-shadow: 0px -1px 2px rgba(0,0,0,.5);
+	padding-bottom: 30px;
+	padding-top: 10px;
+	text-align: center;
 }
+
+.footer p{
+	font-weight: 100;
+	margin:2px;
+	font-size:90%;
+	color: #757575;
+}
+
+#index_image{
+	height: 30em;
+	background-image: url(media/images/other/home.jpeg);
+	background-position: center;
+	background-size: cover;
+	padding: 0;
+}
+
+#logo{
+	height:200px;
+	width: 190px;
+	background-color: #DFD6D0;
+	margin:0px 0px 0px 100px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,.5);
+}
+
+#logo_image{
+	max-height: 160px;
+	max-width: 180px;
+	margin: 0px auto;
+  	display: block;
+  	position: relative;
+  	padding-top: 20px;
+
+
+}
+
+#left {
+  width: 60%;;
+  float:left;
+ }
+
+#right {
+  width: 35%;
+  float:right;
+  border-left: 1px solid #757575;
+  padding-left: 25px;
+ } 
 
 /*********************************************************************************/
 /* Menu                                                                          */
 /*********************************************************************************/
 
-#menu
-{
+nav{
 	position: absolute;
 	right: 10%;
 	top: 0;
 	height: 100%;
 }
-
-#menu ul
-{	
+/*
+#292621
+nav ul{	
 	margin:0;
 	display: inline-block;
 	height: 100%;
 }
 
-#menu li
-{
+nav li{
 	display: block;
 	float: left;
 	text-align: center;
 
 }
 
-#menu li a
-{
+nav li a{
 	display: block;
 	padding: 0em 3em;
 	height: 100%;
@@ -63,3 +156,73 @@ html, body{
 	outline: 0;
 	color: #6C645D;
 }
+*/
+nav ul ul {
+	display: none;
+}
+	
+nav ul li:hover > ul {
+	display: block;
+}
+
+nav ul {
+	list-style: none;
+	position: relative;
+	display: inline-table;
+	margin:0;
+}
+nav ul:after {
+	content: ""; clear: both; display: block;
+}
+
+nav ul li {
+	float: left;
+	text-align: center;
+}
+
+nav ul li:hover {
+	background: #4b545f;
+	background: linear-gradient(top, #949085 0%, #A39F93 40%);
+	background: -moz-linear-gradient(top, #949085 0%, #A39F93 40%);
+	background: -webkit-linear-gradient(top, #949085 0%,#A39F93 40%);
+}
+	nav ul li:hover a {
+		color: #fff;
+	}
+
+nav ul li a {
+	display: block; 
+	color: #757575; 
+	text-decoration: none;
+	line-height: 150px;
+	padding: 0em 3em;
+	letter-spacing: 0.20em;
+	text-transform: uppercase;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+}
+
+nav ul ul {
+	background: #A39F93; 
+	padding: 0;
+	position: absolute; top: 100%;
+}
+nav ul ul li {
+	float: none; 
+	border-top: 1px solid #6C645D;
+	border-bottom: 1px solid #6C645D;
+	position: relative;
+}
+nav ul ul li:first-child{
+	border-top: 2px solid #6C645D;
+}
+
+nav ul ul li a {
+	padding: 15px 40px;
+	color: #fff;
+	line-height: 100%;
+}	
+nav ul ul li a:hover {
+	background: #6C645D;
+}
+

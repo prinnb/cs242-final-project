@@ -2,23 +2,40 @@
 
 {% block main_content %}
 
-	{{ menu_cat.description }}
-	{% if food_menu_list %}
-	    <ul>
-	    {% for food_menu in food_menu_list %}
-	        <li>{{ food_menu.food_item.name }}</li>
+<div class = content_text>
 
-	        {% if food_menu.food_item.description %}
-	        	{{ food_menu.food_item.description }}
-	        {% endif %}
+<h1 align = "center">{{ menu_cat.name }}</h1>
+<p  align = "center">{{ menu_cat.description }}</p>
+{% if menu_dict %}
+	<ul>
+	
+	{% for food_cat, food_menu_list in menu_dict.items %} 
+		<li><h1>{{food_cat}}</h1></li>
+		<ul>
+		{% for food_menu in food_menu_list %} 
+			<li>
+				<div>
+					<span style="float:left;">{{ food_menu.food_item.name }}</span>
+					{% if food_menu.food_item.image %}
+						<span style="float:left; margin-left: 5px;"><a href={{ food_menu.food_item.image.url }} 
+							data-lightbox={{ food_menu.food_item.image.url }}>
+							<img width="13px" src= "{{MEDIA_URL}}images/other/camera_icon.png")></a>
+						</span>
+					{% endif %}
+					<span style="float:right;">${{ food_menu.price|floatformat:2 }}</span>
+				</div>
+				{% if food_menu.food_item.description %}
+		        	<p class = "item_description" style="clear:both;">{{ food_menu.food_item.description }}</p>
+		        {% endif %}
+		        
+			</li>
+		{% endfor %}
+		</ul>
+	{% endfor %}
+	</ul>
+{% else %}
+    <p>No Menu</p>
+{% endif %}
 
-	        {% if food_menu.food_item.image %}
-	        	<img src={{ food_menu.food_item.image.url }}>
-	        {% endif %}
-	    {% endfor %}
-	    </ul>
-	{% else %}
-	    <p>No Menu</p>
-	{% endif %}
-
+</div>
 {% endblock %}

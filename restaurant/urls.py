@@ -6,5 +6,8 @@ from restaurant import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^menu/$', views.menu, name='menu'),
-    url(r'^menu/(?P<menu_cat_id>\d+)/$', views.menu_cat, name='menu_cat')
+    url(r'^menu/(?P<menu_cat_name>.*)/$', views.menu_cat, name='menu_cat'),
+    url(r'^about_us/$', views.about_us, name='about_us'),
+    #url(r'^gallery/$', views.gallery, name='gallery')
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

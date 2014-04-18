@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+from decimal import Decimal
 
 DAYS_OF_WEEK = (
     (0, 'Monday'),
@@ -18,8 +19,8 @@ class RestaurantInfo(models.Model):
 	"""
 	name = models.CharField(max_length=50)
 	email = models.EmailField(null=True, blank=True)
-	phone = models.CharField(max_length=15, null=True, blank=True)
-	fax = models.CharField(max_length=15, null=True, blank=True)
+	phone = models.CharField(max_length=20, null=True, blank=True)
+	fax = models.CharField(max_length=20, null=True, blank=True)
 	street = models.CharField(max_length=50, null=True, blank=True)
 	city = models.CharField(max_length=50, null=True, blank=True)
 	state = models.CharField(max_length=50, null=True, blank=True)
@@ -64,10 +65,10 @@ class MenuCategory(models.Model):
 	"""
 	Model to store categories of menu (e.g, dinner, lunch, etc.)
 	"""
-	title = models.CharField(max_length=50)
+	name = models.CharField(max_length=50, unique = True)
 	description = models.CharField(max_length=255, null=True, blank=True)
-	start_day = models.IntegerField('start serving day', choices=DAYS_OF_WEEK, blank=True)
-	end_day = models.IntegerField('end serving day', choices=DAYS_OF_WEEK, blank=True)
+	start_day = models.IntegerField('start serving day', choices=DAYS_OF_WEEK, null=True, blank=True)
+	end_day = models.IntegerField('end serving day', choices=DAYS_OF_WEEK, null=True, blank=True)
 	start_time = models.TimeField('start serving time', null=True, blank=True)
 	end_time = models.TimeField('end serving time', null=True, blank=True)
 
@@ -80,7 +81,7 @@ class MenuCategory(models.Model):
 		return False
 
 	def __unicode__(self):
-		return self.title
+		return self.name
 
 class FoodCategory(models.Model):
 	"""
@@ -118,8 +119,28 @@ class FoodMenu(models.Model):
 	food_item = models.ForeignKey(FoodItem)
 	food_cat = models.ForeignKey(FoodCategory)	
 	menu_cat = models.ForeignKey(MenuCategory)
-	price = models.FloatField()
+	price = models.DecimalField(max_digits=8, decimal_places=2, default=Decimal('0.00'))
 	def __unicode__(self):
-		return self.food_item.name + " | " + self.menu_cat.title
+		return self.food_item.name + " | " + self.menu_cat.name
+
+class AlbumGallery(models.Model):
+	"""
+	Model to represent gallery album
+	"""
+    name = models.CharField(max_length=50, default = "untitled")
+    description = models.CharField(max_length=255, null=True, blank=True)
+    def __unicode__(self):
+        return self.name
+        
+class ImageGallery(models.Model):
+	"""
+	Model to represent gallery image
+	"""
+    name = models.CharField(max_length=50,  default = "untitled")
+    image = models.ImageField(upload_to = 'images/ImageGallery')
+    albums = models.ManyToManyField(AlbumGallery)
+    def __unicode__(self):
+        return self.name
+
 
 	
