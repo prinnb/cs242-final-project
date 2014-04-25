@@ -1,4 +1,5 @@
 Final Project (CS242) - Prinn B.
 
 To run the test:
-python manage.py test restaurant
+automated test: python manage.py test restaurant
+signin/signup/signout: Manual Test Plan.pdf
