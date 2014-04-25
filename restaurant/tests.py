@@ -1,8 +1,9 @@
 import datetime
 from django.utils import timezone
 from django.test import TestCase
-from restaurant.models import Suggestion, MenuCategory, FoodCategory, FoodItem, FoodMenu, ItemChoice, RestaurantInfo, BusinessHours
+from restaurant.models import Suggestion, MenuCategory, FoodCategory, FoodItem, FoodMenu, ItemChoice, RestaurantInfo, BusinessHours, AlbumGallery, ImageGallery
 from django.core.urlresolvers import reverse
+from forms import SuggestionForm
 
 class RestaurantTests(TestCase):
 
@@ -135,7 +136,6 @@ def create_test_food_menu(food_item, food_cat, menu_cat, price):
 
 class RestaurantViewTests(TestCase):
 
-
 	def test_menu_cat_view_with_one_menu_item(self):
 		"""
 		Test displaying a food menu object in one menu category
@@ -172,4 +172,28 @@ class RestaurantViewTests(TestCase):
 		self.assertQuerysetEqual(response.context['menu_dict'][food_cat1], ['<FoodMenu: test_food_item1 | test_menu_cat1>'] )
 		response = self.client.get(reverse('menu_cat', args=["test_menu_cat2"]))
 		self.assertQuerysetEqual(response.context['menu_dict'][food_cat2], ['<FoodMenu: test_food_item2 | test_menu_cat2>'] )
+
+class RestaurantFormTests(TestCase):
+
+    def test_valid_suggestion_form(self):
+    	"""
+    	Test suggestion form with the valid input
+    	"""
+        form_data = {'name' : 'test user', 'email' : 'test@gmail.com', 'content' : 'this is a test suggestion.'}
+        form = SuggestionForm(data=form_data)
+        self.assertEqual(form.is_valid(), True)
+
+    def test_invalid_suggestion_form(self):
+    	"""
+    	Test suggestion form with invalid inputs. 
+    	The first one test detecting blank field. The second one test for invalid email.
+    	"""
+        form_data_blank_name = {'name' : '', 'email' : 'test@gmail.com', 'content' : 'this is a test suggestion.'}
+        form = SuggestionForm(data=form_data_blank_name)
+        self.assertEqual(form.is_valid(), False)
+
+        form_data_incorrect_email = {'name' : 'test user', 'email' : 'test.com', 'content' : 'this is a test suggestion.'}
+        form = SuggestionForm(data=form_data_incorrect_email)
+        self.assertEqual(form.is_valid(), False)
+
 
