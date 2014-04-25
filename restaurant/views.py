@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from restaurant.models import RestaurantInfo,MenuCategory,FoodMenu, BusinessHours, FoodCategory
 
 def index(request):
@@ -29,3 +30,6 @@ def menu_cat(request, menu_cat_name):
 def about_us(request):
 	context = {}
 	return render(request, 'restaurant/about_us.html', context)
+
+def fb_index(request):
+    return render_to_response("restaurant/fb_index.html", RequestContext(request))

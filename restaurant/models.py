@@ -2,6 +2,8 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from decimal import Decimal
+from allauth.socialaccount.models import SocialAccount
+import hashlib
 
 DAYS_OF_WEEK = (
     (0, 'Monday'),
