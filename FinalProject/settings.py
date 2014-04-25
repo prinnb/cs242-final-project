@@ -22,6 +22,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     'restaurant.context_processors.restaurant_info',
     'restaurant.context_processors.menu_category',
+    'restaurant.context_processors.album_gallery',
     "django.core.context_processors.request",
     "django.contrib.auth.context_processors.auth",
     "allauth.account.context_processors.account",
@@ -72,8 +73,8 @@ AUTHENTICATION_BACKENDS = (
  
  
 # auth and allauth settings
-LOGIN_REDIRECT_URL = '/restaurant/fb'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/restaurant/fb'
+LOGIN_REDIRECT_URL = '/restaurant/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/restaurant/'
 SOCIALACCOUNT_QUERY_EMAIL = True
 
 SOCIALACCOUNT_PROVIDERS = {

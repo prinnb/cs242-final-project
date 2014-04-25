@@ -58,7 +58,7 @@ class Suggestion(models.Model):
 	"""
 	name = models.CharField(max_length=50)
 	email = models.EmailField()
-	post_date = models.DateTimeField('date posted')
+	post_date = models.DateTimeField('date posted', auto_now = True)
 	content = models.TextField()   
 	def __unicode__(self):
 		return u"%s" % self.id

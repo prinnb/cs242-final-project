@@ -10,7 +10,9 @@ urlpatterns = patterns('',
     url(r'^menu/(?P<menu_cat_name>.*)/$', views.menu_cat, name='menu_cat'),
     url(r'^about_us/$', views.about_us, name='about_us'),
     url(r'^accounts/', include('allauth.urls'), name='accounts'),
-    url(r'^fb', views.fb_index),
-    #url(r'^gallery/$', views.gallery, name='gallery')
+    url(r'^login_index/$', views.login_index),
+    url(r'^suggestion/$', views.suggestion, name='suggestion'),
+    url(r'^gallery/$', views.gallery, name='gallery'),
+    url(r'^gallery/(?P<album_name>.*)/$', views.album, name='album'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

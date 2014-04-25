@@ -12,7 +12,10 @@ class FoodItemAdmin(admin.ModelAdmin):
     ]
     inlines = [FoodMenuInline]
 
-admin.site.register(Suggestion)
+class SuggestionAdmin(admin.ModelAdmin):
+    readonly_fields=('post_date',)
+
+admin.site.register(Suggestion, SuggestionAdmin)
 admin.site.register(FoodItem)
 admin.site.register(FoodCategory)
 admin.site.register(MenuCategory)

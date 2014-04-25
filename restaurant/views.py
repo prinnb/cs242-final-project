@@ -2,7 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from restaurant.models import RestaurantInfo,MenuCategory,FoodMenu, BusinessHours, FoodCategory
+from restaurant.models import RestaurantInfo,MenuCategory,FoodMenu, BusinessHours, FoodCategory, AlbumGallery, ImageGallery
+from forms import SuggestionForm
+from django.http import HttpResponseRedirect
+from django.core.context_processors import csrf
 
 def index(request):
     return render(request, 'restaurant/index.html', {})
@@ -31,5 +34,34 @@ def about_us(request):
 	context = {}
 	return render(request, 'restaurant/about_us.html', context)
 
-def fb_index(request):
-    return render_to_response("restaurant/fb_index.html", RequestContext(request))
+def suggestion(request):
+	if request.method == 'POST': 
+		form = SuggestionForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/restaurant/') 
+	elif request.user.is_authenticated():
+		form = SuggestionForm(initial = {'name': request.user.username, 'email': request.user.email})
+	else:
+		form = SuggestionForm()
+
+	context = {}
+	context.update(csrf(request))
+	context['form'] = form
+
+	return render(request, 'restaurant/suggestion.html', context)
+
+def login_index(request):
+    return render_to_response("restaurant/login_index.html", RequestContext(request))
+
+def gallery(request):
+	albums = AlbumGallery.objects.all()
+	context = {'albums': albums}
+	return render(request, 'restaurant/gallery.html', context)
+
+def album(request, album_name):
+	album = get_object_or_404(AlbumGallery, name=album_name)
+	images = album.imagegallery_set.all()
+	context = {'images': images}
+
+	return render(request, 'restaurant/album.html', context)	

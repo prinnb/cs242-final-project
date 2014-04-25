@@ -1,0 +1,18 @@
+{% extends "mybase.html" %}
+
+{% block main_content %}
+
+<div class = content_text>
+
+	{% if albums %}
+	    <ul>
+	    {% for album in albums %}
+	        <li><a href="{% url 'album' album.name %}">{{ album.name }}</a></li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No Album</p>
+	{% endif %}
+
+</div>
+{% endblock %}
