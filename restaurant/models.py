@@ -3,6 +3,7 @@ import datetime
 from django.utils import timezone
 from decimal import Decimal
 from allauth.socialaccount.models import SocialAccount
+from django.contrib.auth.models import User
 import hashlib
 
 DAYS_OF_WEEK = (
@@ -143,6 +144,12 @@ class ImageGallery(models.Model):
 	albums = models.ManyToManyField(AlbumGallery)
 	def __unicode__(self):
 		return self.name
+
+class LikeFoodMenu(models.Model):
+	customer = models.ForeignKey(User)
+	food_menu = models.ForeignKey(FoodMenu)
+
+
 
 
 	

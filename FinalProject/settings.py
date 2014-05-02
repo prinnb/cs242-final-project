@@ -62,6 +62,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'django.contrib.sites',
+    'djangoratings',
 )
 
 AUTHENTICATION_BACKENDS = (

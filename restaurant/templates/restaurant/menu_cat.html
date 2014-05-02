@@ -13,18 +13,35 @@
 		<li><h1>{{food_cat}}</h1></li>
 		<ul>
 		<!-- Display food menu (i.e., the items) in the food category -->
-		{% for food_menu in food_menu_list %} 
+		{% for food_menu, like_count, like_status, user_id in food_menu_list %} 
 			<li>
 				<div>
 					<span style="float:left;">{{ food_menu.food_item.name }}</span>
+
 					{% if food_menu.food_item.image %}
-						<span style="float:left; margin-left: 5px;"><a href={{ food_menu.food_item.image.url }} 
+						<span style="float:left; margin-left: 5px;">
+							<a href={{ food_menu.food_item.image.url }} 
 							data-lightbox={{ food_menu.food_item.image.url }}>
 							<img width="13px" src= "{{MEDIA_URL}}images/other/camera_icon.png")></a>
 						</span>
 					{% endif %}
+
+					{% if user_id = None %}
+					<span><a href="{% url 'index' %}accounts/login" class="pull-right">Like</a></span>
+					{% endif %}
+
+					{% if not user_id = None %}
+					<span><a class = "like_button" href="/restaurant/like/{{ food_menu.id }}">{{ food_menu.id }}</a></span>
+					{% if like_status = True %}
+					<p>You</p>
+					{% endif %}
+					{% endif %}
+
+					<span><p>{{ like_count }} {{ like_status }} {{ user_id }}</p></span>
+
 					<span style="float:right;">${{ food_menu.price|floatformat:2 }}</span>
 				</div>
+
 				{% if food_menu.food_item.description %}
 		        	<p class = "item_description" style="clear:both;">{{ food_menu.food_item.description }}</p>
 		        {% endif %}
