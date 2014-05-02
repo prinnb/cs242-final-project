@@ -13,7 +13,7 @@
 		<li><h1>{{food_cat}}</h1></li>
 		<ul>
 		<!-- Display food menu (i.e., the items) in the food category -->
-		{% for food_menu, like_count, like_status, user_id in food_menu_list %} 
+		{% for food_menu, num_other_like, is_like, user_id in food_menu_list %} 
 			<li>
 				<div>
 					<span style="float:left;">{{ food_menu.food_item.name }}</span>
@@ -31,13 +31,18 @@
 					{% endif %}
 
 					{% if not user_id = None %}
-					<span><a class = "like_button" href="/restaurant/like/{{ food_menu.id }}">{{ food_menu.id }}</a></span>
-					{% if like_status = True %}
-					<p>You</p>
-					{% endif %}
+					<span><button class = "like_button" id = "like_btn_{{ food_menu.id }}" onclick = "click_like_btn({{ num_other_like }}, {{ food_menu.id }})">{{ food_menu.id }}</button></span>
 					{% endif %}
 
-					<span><p>{{ like_count }} {{ like_status }} {{ user_id }}</p></span>
+					{% csrf_token %}
+					<span> <p id = "like_status_{{ food_menu.id }}">
+						{% if is_like %}
+						You and {{ num_other_like }} people like the item.
+						{% else %}
+						{{ num_other_like }} people like the item.
+						{% endif %}
+					</p>
+					</span>
 
 					<span style="float:right;">${{ food_menu.price|floatformat:2 }}</span>
 				</div>
