@@ -26,22 +26,31 @@
 						</span>
 					{% endif %}
 
-					{% if user_id = None %}
-					<span><a href="{% url 'index' %}accounts/login" class="pull-right">Like</a></span>
-					{% endif %}
-
-					{% if not user_id = None %}
-					<span><button class = "like_button" id = "like_btn_{{ food_menu.id }}" onclick = "click_like_btn({{ num_other_like }}, {{ food_menu.id }})">{{ food_menu.id }}</button></span>
-					{% endif %}
-
-					{% csrf_token %}
-					<span> <p id = "like_status_{{ food_menu.id }}">
-						{% if is_like %}
-						You and {{ num_other_like }} people like the item.
-						{% else %}
-						{{ num_other_like }} people like the item.
+					<span class = "like_section">
+						{% if user_id = None %}
+						<span style="float:left; margin-left: 10px; margin-right: 10px;">
+								<a class='iframe_popup' href= "{% url 'index' %}accounts/login" >
+								<img width="13px" src= "{{MEDIA_URL}}images/other/like_icon.png")></a>
+						</span>
 						{% endif %}
-					</p>
+
+						{% if not user_id = None %}
+
+						<span style="float:left; margin-left: 10px; margin-right: 10px;">
+							<img width="13px" onclick = "click_like_btn({{ num_other_like }}, {{ food_menu.id }})" 
+							src= "{{MEDIA_URL}}images/other/like_icon.png")></a>
+						</span>
+
+						{% endif %}
+
+						{% csrf_token %}
+						<span id = "like_status_{{ food_menu.id }}">
+							{% if is_like %}
+							You and {{ num_other_like }} people like the item.
+							{% else %}
+							{{ num_other_like }} people like the item.
+							{% endif %}
+						</span>
 					</span>
 
 					<span style="float:right;">${{ food_menu.price|floatformat:2 }}</span>

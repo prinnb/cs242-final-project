@@ -15,7 +15,8 @@ urlpatterns = patterns('',
     url(r'^gallery/$', views.gallery, name='gallery'),
     url(r'^gallery/(?P<album_name>.*)/$', views.album, name='album'),
     url(r'^like/(?P<food_menu_id>\d+)/$', views.food_menu_like, name='food_menu_like'),
+    url(r'^login_redirect/$', views.login_redirect, name='login_redirect'),
+	url(r'^logout_redirect/$', views.logout_redirect, name='logout_redirect'),
 
-    #url(r'^reservation/$', views.reservation, name='reservation'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

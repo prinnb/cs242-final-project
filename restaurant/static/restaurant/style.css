@@ -4,13 +4,14 @@ html, body{
 	color: white
 }
 
-p{
+body{
 	font-family: 'Lato', sans-serif;
 }
 
-ul, h1, h2, h3, h4, h5, h6{
-	font-family: 'Lato', sans-serif;
-}
+a:link {color:#6c6c6c;} 
+a:visited {color:#757575;}
+a:hover {color:white;} 
+a:active {color:white;} 
 
 .header{ 
 	background-color:#323232; 
@@ -96,6 +97,45 @@ ul, h1, h2, h3, h4, h5, h6{
   	position: relative;
   	padding-top: 20px;
 }
+
+.like_section span{
+	font-size: 13px;
+	color: #909090;
+}
+
+.like_section img{
+	vertical-align: text-bottom;
+	cursor: pointer;
+}
+
+.profile_pic{
+	vertical-align: middle;
+}
+
+textarea, input:not([type=submit]):not([type=file]) {
+    border: none; 
+    padding: 5px;
+    background: rgba(255,255,255,0.08);
+    margin: 0 0 10px 0;
+    color: #D3D3D3;
+}
+
+textarea{
+  display:inline-block;
+  vertical-align:middle;
+}
+
+#suggestion_form{
+	width: 500px;
+    clear: both;
+}
+
+#suggestion_form textarea, input:not([type=submit]):not([type=file]) {
+    float:right;
+    clear:both;
+    width: 80%;
+}
+
 
 /*********************************************************************************/
 /* Index                                                                         */

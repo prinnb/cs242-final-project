@@ -7,7 +7,7 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-
+#/Library/Python/2.7/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -62,7 +62,6 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'django.contrib.sites',
-    'djangoratings',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -74,8 +73,8 @@ AUTHENTICATION_BACKENDS = (
  
  
 # auth and allauth settings
-LOGIN_REDIRECT_URL = '/restaurant/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/restaurant/'
+LOGIN_REDIRECT_URL = '/restaurant/login_redirect'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/restaurant/logout_redirect'
 SOCIALACCOUNT_QUERY_EMAIL = True
 
 SOCIALACCOUNT_PROVIDERS = {

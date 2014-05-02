@@ -90,5 +90,9 @@ def food_menu_like(request, food_menu_id):
 			return render(request, 'ajax_like_count.html' , {'is_like' : True, 'num_other_like' : int(num_other_like)})
 	return HttpResponseRedirect('/restaurant/')
 
+def login_redirect(request):
+	return render(request, 'restaurant/login_redirect.html', {})
 
+def logout_redirect(request):
+	return render(request, 'restaurant/logout_redirect.html', {})
 
