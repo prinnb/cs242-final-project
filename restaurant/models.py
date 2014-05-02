@@ -146,10 +146,11 @@ class ImageGallery(models.Model):
 		return self.name
 
 class LikeFoodMenu(models.Model):
+	"""
+	Model to represent customer liking food menu
+	"""
 	customer = models.ForeignKey(User)
 	food_menu = models.ForeignKey(FoodMenu)
-
-
 
 
 	

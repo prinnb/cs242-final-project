@@ -98,6 +98,14 @@ a:active {color:white;}
   	padding-top: 20px;
 }
 
+.profile_pic{
+	vertical-align: middle;
+}
+
+/*********************************************************************************/
+/* Menu Cat                                                                      */
+/*********************************************************************************/
+
 .like_section span{
 	font-size: 13px;
 	color: #909090;
@@ -108,9 +116,9 @@ a:active {color:white;}
 	cursor: pointer;
 }
 
-.profile_pic{
-	vertical-align: middle;
-}
+/*********************************************************************************/
+/* Suggestion                                                                    */
+/*********************************************************************************/
 
 textarea, input:not([type=submit]):not([type=file]) {
     border: none; 
@@ -129,6 +137,11 @@ textarea{
 	width: 500px;
     clear: both;
 }
+
+#suggestion_form p{
+	vertical-align: middle;
+}
+
 
 #suggestion_form textarea, input:not([type=submit]):not([type=file]) {
     float:right;

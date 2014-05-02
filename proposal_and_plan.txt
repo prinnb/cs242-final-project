@@ -26,7 +26,7 @@ Week 2:
 Implement basic view (html/css) of the main pages of the site. Tie it with the last week model.
 
 Week 3:
-Continue working on and improve the view. Customize admin page.
+Continue working on and improve the view. Add user signin/signup (also login with facebook)
 
 Week 4:
-Add Javascript/Ajax to the web. Polish UI.
+Add Javascript/Ajax to the web. Polish UI. Add like functionality.

@@ -28,6 +28,7 @@
 
 					<span class = "like_section">
 						{% if user_id = None %}
+						<!-- if user doesn't login, open signin popup upon clicking like -->
 						<span style="float:left; margin-left: 10px; margin-right: 10px;">
 								<a class='iframe_popup' href= "{% url 'index' %}accounts/login" >
 								<img width="13px" src= "{{MEDIA_URL}}images/other/like_icon.png")></a>
@@ -35,7 +36,6 @@
 						{% endif %}
 
 						{% if not user_id = None %}
-
 						<span style="float:left; margin-left: 10px; margin-right: 10px;">
 							<img width="13px" onclick = "click_like_btn({{ num_other_like }}, {{ food_menu.id }})" 
 							src= "{{MEDIA_URL}}images/other/like_icon.png")></a>
@@ -53,6 +53,7 @@
 						</span>
 					</span>
 
+					<!-- Display price -->
 					<span style="float:right;">${{ food_menu.price|floatformat:2 }}</span>
 				</div>
 

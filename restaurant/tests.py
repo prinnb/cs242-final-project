@@ -96,45 +96,44 @@ class RestaurantTests(TestCase):
 		test_price = 3.50
 
 		test_food_menu = FoodMenu(food_item = test_food_item, 
-							food_cat = test_food_cat, menu_cat = test_menu_cat, price = test_price)
+		food_cat = test_food_cat, menu_cat = test_menu_cat, price = test_price)
 		self.assertEqual(test_food_menu.food_item.name, 'pep pizza')
 		self.assertEqual(test_food_menu.food_cat.name, 'pizza')
 		self.assertEqual(test_food_menu.menu_cat.name, 'lunch')
 		self.assertEqual(test_food_menu.price, test_price)
 
 
-def create_test_restaurant(rest_name):
-	"""
-	Create a minimal RestaurantInfo object with the input name as its name
-	"""
-	return RestaurantInfo.objects.create(name = rest_name)
-
-def create_test_food_item(food_cat_name):
-	"""
-	Create a minimal FoodItem object with the input name as its name
-	"""
-	return FoodItem.objects.create(name = food_cat_name)
-
-def create_test_food_cat(menu_cat_name):
-	"""
-	Create a minimal FoodCategory object with the input name as its name
-	"""
-	return FoodCategory.objects.create(name = menu_cat_name)
-
-def create_test_menu_cat(price):
-	"""
-	Create a minimal MenuCategory object with the input name as its name
-	"""
-	return MenuCategory.objects.create(name = price)
-
-def create_test_food_menu(food_item, food_cat, menu_cat, price):
-	"""
-	Create a FoodMenu object with the input FoodItem, FoodCategory, MenuCategory, and price
-	"""
-	return FoodMenu.objects.create(food_item=food_item, food_cat=food_cat, menu_cat = menu_cat, price = price)
-
-
 class RestaurantViewTests(TestCase):
+
+	def create_test_restaurant(rest_name):
+		"""
+		Create a minimal RestaurantInfo object with the input name as its name
+		"""
+		return RestaurantInfo.objects.create(name = rest_name)
+
+	def create_test_food_item(food_cat_name):
+		"""
+		Create a minimal FoodItem object with the input name as its name
+		"""
+		return FoodItem.objects.create(name = food_cat_name)
+
+	def create_test_food_cat(menu_cat_name):
+		"""
+		Create a minimal FoodCategory object with the input name as its name
+		"""
+		return FoodCategory.objects.create(name = menu_cat_name)
+
+	def create_test_menu_cat(price):
+		"""
+		Create a minimal MenuCategory object with the input name as its name
+		"""
+		return MenuCategory.objects.create(name = price)
+
+	def create_test_food_menu(food_item, food_cat, menu_cat, price):
+		"""
+		Create a FoodMenu object with the input FoodItem, FoodCategory, MenuCategory, and price
+		"""
+		return FoodMenu.objects.create(food_item=food_item, food_cat=food_cat, menu_cat = menu_cat, price = price)
 
 	def test_menu_cat_view_with_one_menu_item(self):
 		"""

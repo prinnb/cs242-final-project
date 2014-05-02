@@ -6,7 +6,7 @@
 		<form action="" method = "post"> {% csrf_token %}
 			<p>{{form.name.label}} {{form.name}}</p>
 			<p>{{form.email.label}} {{form.email}}</p>
-			<p style = "vertical-align: middle;">{{form.content.label}} {{form.content}}</p>
+			<p>{{form.content.label}} {{form.content}}</p>
 			<input type = "submit" name = "submit" value = "send suggestion" style = "float:right;">
 		</form>
 	</div>
