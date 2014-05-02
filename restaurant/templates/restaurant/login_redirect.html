@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,
+	300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="{% static 'restaurant/account.css' %}" />
+
+<h1 class = "header">Login Successfully!</h1>
+
+<div class = "user_info">
+	{% if request.user.first_name or request.user.last_name %}
+	    <img class = "profile_pic" src="{{user.socialaccount_set.all.0.get_avatar_url}}" />
+	    <h3>{{ request.user.first_name }} {{ request.user.last_name }}</h3>
+	{% else %}
+	    <h3>{{ request.user.username }}</h3>
+	{% endif %}
+	<a href="{% url 'index' %}accounts/logout">Logout</a>	 
+</div>
